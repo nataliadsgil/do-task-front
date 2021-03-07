@@ -12,7 +12,7 @@ export default function Home() {
       <main className={styles.main}>
         <h1>DoTask</h1>
         <Card>
-          <CardHeader>Login</CardHeader>
+          <CardHeader>Cadastro</CardHeader>
           <CardBody>
             <Form>
               <FormGroup>
@@ -21,14 +21,20 @@ export default function Home() {
               <FormGroup>
                 <Input placeholder="Senha" />
               </FormGroup>
+              <FormGroup>
+                <Input placeholder="Senha" />
+              </FormGroup>
+              <FormGroup>
+                <Input placeholder="Repetir Senha" />
+              </FormGroup>
 
-              <Button color='primary'>Entrar</Button>
+              <Button color='primary'>Cadastrar</Button>
             </Form>
           </CardBody>
 
           <CardFooter>
-            <span>Ainda não tem uma conta?</span>
-            <Link href="/register">Cadastre-se</Link>
+            <span>Já tem uma conta?</span>
+            <Link href="/">Fazer Login</Link>
           </CardFooter>
         </Card>
       </main>
