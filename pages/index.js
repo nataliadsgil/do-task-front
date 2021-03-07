@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import styles from '../styles/Home.module.css'
 
 import {
@@ -7,6 +8,7 @@ import {
 } from 'reactstrap'
 
 export default function Home() {
+  const router = useRouter();
   return (
     <Container>
       <main className={styles.main}>
@@ -22,7 +24,7 @@ export default function Home() {
                 <Input placeholder="Senha" />
               </FormGroup>
 
-              <Button color='primary'>Entrar</Button>
+              <Button onClick={ () => router.push('/list') } color='primary'>Entrar</Button>
             </Form>
           </CardBody>
 
