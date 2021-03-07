@@ -6,7 +6,7 @@ import {
   Card, CardBody, CardFooter, Form, FormGroup, Input, Button, CardHeader, Container
 } from 'reactstrap'
 
-export default function Home() {
+export default function Register() {
   return (
     <Container>
       <main className={styles.main}>

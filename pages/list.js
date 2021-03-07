@@ -5,6 +5,8 @@ import {
   Container, Alert, Row, Col
 } from 'reactstrap'
 
+import NavBar from './components/navbar'
+
 export default function Home() {
 
   const [list, setList] = useState([
@@ -48,23 +50,26 @@ export default function Home() {
   let printDate = ''
 
   return (
-    <Container>
-      <Row>
-        {list.map(item => {
-          const el = (
-            <>
-              {printDate !== item.date && (<Col md='12'>
-                <Alert color='light'>{item.date}</Alert>
-              </Col>)}
-              <Col md='12'>
-                <Alert color={item.done ? 'success' : 'primary'}>{item.title}</Alert>
-              </Col>
-            </>
-          )
-          printDate = item.date
-          return el
-        })}
-      </Row>
-    </Container>
+    <>
+      <NavBar />
+      <Container>
+        <Row>
+          {list.map(item => {
+            const el = (
+              <>
+                {printDate !== item.date && (<Col md='12'>
+                  <Alert color='light'>{item.date}</Alert>
+                </Col>)}
+                <Col md='12'>
+                  <Alert color={item.done ? 'success' : 'primary'}>{item.title}</Alert>
+                </Col>
+              </>
+            )
+            printDate = item.date
+            return el
+          })}
+        </Row>
+      </Container>
+    </>
   )
 }
