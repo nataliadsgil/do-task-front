@@ -17,6 +17,25 @@ const UserService = {
                 reject(error.reject)
             })
         })
+    },
+    login: (data) => {
+        return new Promise((resolve, reject)=>{
+            axios.post(connection.base_url + '/authenticate',{
+                email: data.email,
+                password: data.password
+            })
+            .then(response => {
+                resolve(response)
+            })
+            .catch(error => {
+                //console.log(error.response);
+                if (error.response) {
+                   reject({
+                    message: error.response.data
+                   }) 
+                }
+            })
+        })
     }    
 }
 export default UserService;
