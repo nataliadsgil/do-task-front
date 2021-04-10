@@ -6,6 +6,7 @@ import {
 } from 'reactstrap'
 
 import NavBar from './components/navbar'
+import AddButton from './components/addButton'
 
 export default function Home() {
 
@@ -70,6 +71,7 @@ export default function Home() {
           })}
         </Row>
       </Container>
+      <AddButton />
     </>
   )
 }

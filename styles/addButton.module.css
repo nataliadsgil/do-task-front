@@ -1,0 +1,14 @@
+.addButton {
+  background-color: #001C55;
+  position: fixed;
+  right: 2.5vw;
+  bottom: 5vh;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+}

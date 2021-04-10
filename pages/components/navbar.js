@@ -2,9 +2,11 @@ import {
   Navbar, NavbarBrand, NavItem, NavLink, Nav
 } from 'reactstrap'
 
+import styles from '../../styles/navbar.module.css'
+
 export default function Home() {
   return (
-    <Navbar color="dark">
+    <Navbar className={styles.mainNavbar}>
       <NavbarBrand>DoTask</NavbarBrand>
       <Nav>
         <NavItem>
