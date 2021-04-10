@@ -8,6 +8,7 @@ import {
 import NavBar from './components/navbar'
 import AddButton from './components/addButton'
 import ModalTask from './components/taskModal'
+import Message from './components/message'
 
 export default function Home() {
 
@@ -52,14 +53,20 @@ export default function Home() {
   let printDate = ''
 
   const [openCreateModal, setOpenCreateModal] = useState(false);
+  const [openMessageModal, setOpenMessageModal] = useState(false);
 
   const toggleCreateModal = () => {
     setOpenCreateModal(!openCreateModal)
   }
 
+  const closeMessageModal = () => {
+    setOpenMessageModal(!openMessageModal)
+  }
+
   return (
     <>
       <ModalTask open={openCreateModal} close={toggleCreateModal} />
+      <Message open={openMessageModal} toggle={closeMessageModal} text={'Tarefa adicionada com sucesso!'} />
       <NavBar />
       <Container>
         <Row>
