@@ -7,6 +7,7 @@ import {
 
 import NavBar from './components/navbar'
 import AddButton from './components/addButton'
+import ModalTask from './components/taskModal'
 
 export default function Home() {
 
@@ -50,8 +51,15 @@ export default function Home() {
 
   let printDate = ''
 
+  const [openCreateModal, setOpenCreateModal] = useState(false);
+
+  const toggleCreateModal = () => {
+    setOpenCreateModal(!openCreateModal)
+  }
+
   return (
     <>
+      <ModalTask open={openCreateModal} close={toggleCreateModal} />
       <NavBar />
       <Container>
         <Row>
@@ -71,7 +79,7 @@ export default function Home() {
           })}
         </Row>
       </Container>
-      <AddButton />
+      <AddButton onClick={toggleCreateModal} />
     </>
   )
 }
