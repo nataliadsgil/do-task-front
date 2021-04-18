@@ -10,7 +10,7 @@ import stylesForm from '../../styles/form.module.css'
 
 import TaskService from '../../services/task'
 
-export default function TaskModal({ open, close }) {
+export default function TaskModal({ open, close, insert }) {
 
   const [dateTask, setDateTask] = useState('')
   const [descriptionTask, setDescriptionTask] = useState('')
@@ -22,7 +22,7 @@ export default function TaskModal({ open, close }) {
     })
       .then(result => {
         console.log(result);
-        alert("Tarefa inserida com sucesso");
+        insert();
       })
       .catch(err => {
         console.log(err);

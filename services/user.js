@@ -1,5 +1,6 @@
 import axios from 'axios';
 import connection from '../configuration/connection';
+import { setCookie, getCookie } from '../utils/manage-cookies';
 
 const UserService = {
     create: (data) => {
@@ -25,6 +26,9 @@ const UserService = {
                 password: data.password
             })
                 .then(response => {
+                    if (response.status === 200) {
+                        setCookie('dotaskcookie', response.data.token, 3);
+                    }
                     resolve(response)
                 })
                 .catch(error => {
