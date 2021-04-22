@@ -46,7 +46,7 @@ export default function Home() {
                   <Input className={styles.input} placeholder="Email" type='text' value={email} onChange={(e) => setEmail(e.target.value)} />
                 </FormGroup>
                 <FormGroup>
-                  <Input className={styles.input} placeholder="Senha" type='text' value={password} onChange={(e) => setPassword(e.target.value)} />
+                  <Input className={styles.input} placeholder="Senha" type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
                 </FormGroup>
 
                 <Button className={styles.button} onClick={() => loginUser()} color='primary'>Entrar</Button>
