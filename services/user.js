@@ -1,7 +1,7 @@
 import axios from 'axios';
 import connection from '../configuration/connection';
 import { setCookie, getCookie } from '../utils/manage-cookies';
-
+export let userName = '';
 const UserService = {
     create: (data) => {
         return new Promise((resolve, reject) => {
@@ -27,7 +27,8 @@ const UserService = {
             })
                 .then(response => {
                     if (response.status === 200) {
-                        setCookie('dotaskcookie', response.data.token, 3);
+                        userName = response.data.user.userName;
+                        setCookie('dotaskcookie', response.data.user.token, 3);
                     }
                     resolve(response)
                 })
