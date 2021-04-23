@@ -11,7 +11,7 @@ import AddButton from './components/addButton'
 import ModalTask from './components/taskModal'
 import Message from './components/message'
 import TaskService from '../services/task'
-export default function Home() {
+export default function Home(props) {
 
   const [list, setList] = useState([
 
@@ -62,6 +62,15 @@ export default function Home() {
     listTasks();
   }, [])
 
+  const formatDate = (item) => {
+    var date = new Date(item.date);
+    var month = ((date.getMonth() + 1) < 10) ? '0' + (date.getMonth() + 1) : date.getMonth() + 1;
+    var day = ((date.getDate() + 1) < 10) ? '0' + (date.getDate() + 1) : date.getDate() + 1;
+    return `${day}/${month}/${date.getFullYear()}`;
+  }
+
+  console.log("PROS", props)
+
   return (
     <>
       <ModalTask edit={editTask} item={editItem} open={openCreateModal} close={toggleCreateModal} insert={successTaskCreated} />
@@ -73,7 +82,7 @@ export default function Home() {
             const el = (
               <>
                 {printDate !== item.date && (<Col md='12'>
-                  <Alert color='light'>{moment(item.date).format('DD/MM/YYYY')}</Alert>
+                  <Alert color='light'>{formatDate(item)}</Alert>
                 </Col>)}
                 <Col md='12'>
                   <Alert onClick={() => toggleEditModal(item)} color={item.check ? 'success' : 'primary'}>{item.description}</Alert>

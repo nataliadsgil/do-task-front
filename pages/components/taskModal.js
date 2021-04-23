@@ -48,7 +48,8 @@ export default function TaskModal({ open, close, insert, edit, item }) {
     TaskService.update({
       date: dateTask,
       description: descriptionTask,
-      id: item._id
+      id: item._id,
+      check: item.check
     })
       .then(result => {
         console.log(result);

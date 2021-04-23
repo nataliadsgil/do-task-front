@@ -19,6 +19,26 @@ const UserService = {
                 })
         })
     },
+    getUser: (data) => {
+        return new Promise((resolve, reject) => {
+            axios.get(connection.base_url + '/user', {
+                headers: {
+                    'x-access-token': getCookie('dotaskcookie')
+                }
+            })
+                .then(response => {
+                    resolve(response)
+                })
+                .catch(error => {
+                    //console.log(error.response);
+                    if (error.response) {
+                        reject({
+                            message: error.response.data
+                        })
+                    }
+                })
+        })
+    },
     login: (data) => {
         return new Promise((resolve, reject) => {
             axios.post(connection.base_url + '/authenticate', {
