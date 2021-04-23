@@ -18,6 +18,22 @@ const TaskService = {
         })
     })
   },
+  update: (data) => {
+    return new Promise((resolve, reject) => {
+      axios.put(connection.base_url + "/task/" + data.id, {
+        date: data.date,
+        description: data.description,
+        check: data.check ? data.check : false,
+        token: getCookie('dotaskcookie')
+      })
+        .then(response => {
+          resolve(response)
+        })
+        .catch(error => {
+          reject(error.reject)
+        })
+    })
+  },
   list: () => {
     return new Promise((resolve, reject) => {
       axios.get(connection.base_url + "/task", {

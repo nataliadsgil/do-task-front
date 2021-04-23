@@ -9,6 +9,10 @@
   align-items: flex-end;
 }
 
+.buttonGroup {
+  display: flex;
+}
+
 .buttonCreate {
   align-self: flex-end;
   background-color: #0E6BA8;
@@ -18,4 +22,20 @@
   height: 40px;
   font-size: 0.9rem;
   padding: 0 30px;
+}
+
+.buttonCheck {
+  align-self: flex-start;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  padding: 0 30px;
+  height: 40px;
+}
+
+.buttonDelete {
+  align-self: flex-start;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  padding: 0 30px;
+  height: 40px;
 }
