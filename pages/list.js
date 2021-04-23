@@ -17,37 +17,37 @@ export default function Home() {
     {
       date: '2021-03-07',
       description: 'Desenvolver algorito para aula de algoritmos',
-      done: true
+      check: true
     },
     {
       date: '2021-03-07',
       description: 'Pesquisar sobre 4ª revolução industrial',
-      done: false
+      check: false
     },
     {
       date: '2021-03-08',
       description: 'Arrumar o quarto',
-      done: false
+      check: false
     },
     {
       date: '2021-03-08',
       description: 'Comprar café, pão e biscoito',
-      done: false
+      check: false
     },
     {
       date: '2021-03-09',
       description: 'Entregar trabalho para professor de redes',
-      done: false
+      check: false
     },
     {
       date: '2021-03-09',
       description: 'Devolver o livro na biblioteca',
-      done: false
+      check: false
     },
     {
       date: '2021-03-09',
       description: 'Formatar notebook',
-      done: false
+      check: false
     }
   ])
 
@@ -55,9 +55,12 @@ export default function Home() {
 
   const [openCreateModal, setOpenCreateModal] = useState(false);
   const [openMessageModal, setOpenMessageModal] = useState(false);
+  const [editTask, setEditTask] = useState(false);
+  const [editItem, setEditItem] = useState({});
 
   const toggleCreateModal = () => {
     setOpenCreateModal(!openCreateModal)
+    setEditTask(false);
   }
 
   const closeMessageModal = () => {
@@ -67,6 +70,12 @@ export default function Home() {
   const successTaskCreated = () => {
     setOpenCreateModal(false);
     listTasks();
+  }
+
+  const toggleEditModal = (item) => {
+    setOpenCreateModal(!openCreateModal)
+    setEditTask(true);
+    setEditItem(item);
   }
 
   const listTasks = () => {
@@ -89,7 +98,7 @@ export default function Home() {
 
   return (
     <>
-      <ModalTask open={openCreateModal} close={toggleCreateModal} insert={successTaskCreated} />
+      <ModalTask edit={editTask} item={editItem} open={openCreateModal} close={toggleCreateModal} insert={successTaskCreated} />
       <Message open={openMessageModal} toggle={closeMessageModal} text={'Tarefa adicionada com sucesso!'} />
       <NavBar />
       <Container>
@@ -101,7 +110,7 @@ export default function Home() {
                   <Alert color='light'>{item.date}</Alert>
                 </Col>)}
                 <Col md='12'>
-                  <Alert color={item.done ? 'success' : 'primary'}>{item.description}</Alert>
+                  <Alert onClick={() => toggleEditModal(item)} color={item.check ? 'success' : 'primary'}>{item.description}</Alert>
                 </Col>
               </>
             )

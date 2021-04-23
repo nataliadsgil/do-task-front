@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import {
   Modal, ModalBody, ModalHeader, ModalFooter,
@@ -10,10 +10,20 @@ import stylesForm from '../../styles/form.module.css'
 
 import TaskService from '../../services/task'
 
-export default function TaskModal({ open, close, insert }) {
+export default function TaskModal({ open, close, insert, edit, item }) {
 
   const [dateTask, setDateTask] = useState('')
   const [descriptionTask, setDescriptionTask] = useState('')
+
+  useEffect(() => {
+    if (open === true && edit) {
+      var date = new Date(item.date);
+      var month = ((date.getMonth() + 1) < 10) ? '0' + (date.getMonth() + 1) : date.getMonth() + 1;
+      var day = ((date.getDate() + 1) < 10) ? '0' + (date.getDate() + 1) : date.getDate() + 1;
+      setDateTask(`${date.getFullYear()}-${month}-${day}`);
+      setDescriptionTask(item.description);
+    }
+  }, [open])
 
   const createTask = () => {
     TaskService.create({
@@ -30,9 +40,11 @@ export default function TaskModal({ open, close, insert }) {
       })
   }
 
+  console.log(edit)
+
   return (
-    <Modal isOpen={open}>
-      <ModalHeader toggle={close}>Adicionar tarefa</ModalHeader>
+    <Modal isOpen={open} className="modal-lg">
+      <ModalHeader toggle={close}>{edit ? 'Editar' : 'Adicionar'} tarefa</ModalHeader>
       <ModalBody>
         <Form className={stylesForm.createForm}>
           <FormGroup>
@@ -46,8 +58,19 @@ export default function TaskModal({ open, close, insert }) {
             <small>Até 150 caracteres</small>
           </FormGroup>
 
-          <Button className={stylesForm.buttonCreate} color='primary'
-            onClick={createTask}>Adicionar tarefa</Button>
+          <div className={stylesForm.buttonGroup}>
+            {edit && (
+              <>
+                <Button color='success' className={stylesForm.buttonCheck}
+                  onClick={createTask}>Marcar como concluída</Button>
+                <Button color='danger' className={stylesForm.buttonDelete}
+                  onClick={createTask}>Deletar</Button>
+              </>
+            )}
+
+            <Button className={stylesForm.buttonCreate} color='primary'
+              onClick={createTask}>Adicionar tarefa</Button>
+          </div>
         </Form>
       </ModalBody>
     </Modal>
