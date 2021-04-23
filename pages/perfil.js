@@ -15,8 +15,6 @@ export default function Perfil() {
     const router = useRouter();
     const [name, setName] = useState('Daniel');
     const [email, setEmail] = useState('d@moya.com');
-    const [password, setPassword] = useState('*****');
-    const [confirmPassword, setConfirmPassword] = useState('****');
     return (
         <div>
             <NavBar />
@@ -28,12 +26,7 @@ export default function Perfil() {
                     <FormGroup className={styles.FormGroup}>
                         <Input className={styles.input} placeholder="E-mail" type='text' value={email} onChange={(e) => setEmail(e.target.value)} />
                     </FormGroup>
-                    <FormGroup className={styles.FormGroup}>
-                        <Input className={styles.input} placeholder="Senha" type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
-                    </FormGroup>
-                    <FormGroup className={styles.FormGroup}>
-                        <Input className={styles.input} placeholder="Repetir Senha" type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-                    </FormGroup>
+
                     <Button className={styles.button} onClick={() => { }} >Alterar Dados</Button>
                 </Form>
 

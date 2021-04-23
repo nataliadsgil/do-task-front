@@ -13,15 +13,16 @@
     height: 46px;    
   }
   .formPerfil{
+      margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
       width: 50%;
       margin-top: 5%;
   }
-  .FormGroup{
+  .FormGroup{      
       width: 100%;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
   }
