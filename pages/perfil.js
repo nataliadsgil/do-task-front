@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
 import styles from '../styles/perfil.module.css'
+import UserService from '../services/user'
+
 import {
     Container, Alert, Row, Col, CardBody
 } from 'reactstrap'
@@ -13,8 +15,16 @@ import {
 
 export default function Perfil() {
     const router = useRouter();
-    const [name, setName] = useState('Daniel');
-    const [email, setEmail] = useState('d@moya.com');
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+
+    useEffect(() => {
+        UserService.getUser().then(result => {
+            setName(result.data.name)
+            setEmail(result.data.email)
+        });
+    }, [])
+
     return (
         <div>
             <NavBar />
