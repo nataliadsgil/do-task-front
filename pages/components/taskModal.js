@@ -23,6 +23,10 @@ export default function TaskModal({ open, close, insert, edit, item }) {
       setDateTask(`${date.getFullYear()}-${month}-${day}`);
       setDescriptionTask(item.description);
     }
+    else if (open === true) {
+      setDateTask('');
+      setDescriptionTask('');
+    }
   }, [open])
 
   const createTask = () => {
@@ -37,6 +41,39 @@ export default function TaskModal({ open, close, insert, edit, item }) {
       .catch(err => {
         console.log(err);
         alert("Erro ao inserir tarefa");
+      })
+  }
+
+  const editTask = () => {
+    TaskService.update({
+      date: dateTask,
+      description: descriptionTask,
+      id: item._id
+    })
+      .then(result => {
+        console.log(result);
+        insert();
+      })
+      .catch(err => {
+        console.log(err);
+        alert("Erro ao editar tarefa");
+      })
+  }
+
+  const checkTask = () => {
+    TaskService.update({
+      id: item._id,
+      date: item.date,
+      description: item.description,
+      check: true
+    })
+      .then(result => {
+        console.log(result);
+        insert();
+      })
+      .catch(err => {
+        console.log(err);
+        alert("Erro ao editar tarefa");
       })
   }
 
@@ -62,14 +99,14 @@ export default function TaskModal({ open, close, insert, edit, item }) {
             {edit && (
               <>
                 <Button color='success' className={stylesForm.buttonCheck}
-                  onClick={createTask}>Marcar como concluída</Button>
+                  onClick={checkTask}>Marcar como concluída</Button>
                 <Button color='danger' className={stylesForm.buttonDelete}
                   onClick={createTask}>Deletar</Button>
               </>
             )}
 
             <Button className={stylesForm.buttonCreate} color='primary'
-              onClick={createTask}>Adicionar tarefa</Button>
+              onClick={edit ? editTask : createTask}>Salvar</Button>
           </div>
         </Form>
       </ModalBody>

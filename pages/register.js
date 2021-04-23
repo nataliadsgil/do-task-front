@@ -6,7 +6,6 @@ import {
   Card, CardBody, CardFooter, Form, FormGroup, Input, Button, CardHeader, Container, Alert
 } from 'reactstrap'
 import { useState } from 'react';
-import { route } from 'next/dist/next-server/server/router';
 
 export default function Register() {
   const router = useRouter();
@@ -37,7 +36,7 @@ export default function Register() {
         })
 
         setTimeout(() => {
-          router.push('/list');
+          router.push('/');
         }, 1000)
       })
     }

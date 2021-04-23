@@ -14,41 +14,7 @@ import TaskService from '../services/task'
 export default function Home() {
 
   const [list, setList] = useState([
-    {
-      date: '2021-03-07',
-      description: 'Desenvolver algorito para aula de algoritmos',
-      check: true
-    },
-    {
-      date: '2021-03-07',
-      description: 'Pesquisar sobre 4ª revolução industrial',
-      check: false
-    },
-    {
-      date: '2021-03-08',
-      description: 'Arrumar o quarto',
-      check: false
-    },
-    {
-      date: '2021-03-08',
-      description: 'Comprar café, pão e biscoito',
-      check: false
-    },
-    {
-      date: '2021-03-09',
-      description: 'Entregar trabalho para professor de redes',
-      check: false
-    },
-    {
-      date: '2021-03-09',
-      description: 'Devolver o livro na biblioteca',
-      check: false
-    },
-    {
-      date: '2021-03-09',
-      description: 'Formatar notebook',
-      check: false
-    }
+
   ])
 
   let printDate = ''
