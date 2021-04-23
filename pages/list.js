@@ -4,13 +4,13 @@ import { useEffect, useState } from 'react'
 import {
   Container, Alert, Row, Col
 } from 'reactstrap'
+import moment from 'moment'
 
 import NavBar from './components/navbar'
 import AddButton from './components/addButton'
 import ModalTask from './components/taskModal'
 import Message from './components/message'
 import TaskService from '../services/task'
-
 export default function Home() {
 
   const [list, setList] = useState([
@@ -107,7 +107,7 @@ export default function Home() {
             const el = (
               <>
                 {printDate !== item.date && (<Col md='12'>
-                  <Alert color='light'>{item.date}</Alert>
+                  <Alert color='light'>{moment(item.date).format('DD/MM/YYYY')}</Alert>
                 </Col>)}
                 <Col md='12'>
                   <Alert onClick={() => toggleEditModal(item)} color={item.check ? 'success' : 'primary'}>{item.description}</Alert>
