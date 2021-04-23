@@ -10,8 +10,8 @@ import {
 } from 'reactstrap'
 
 export default function Home() {
-  const [email, setEmail] = useState('dmoyasilva@gmail.com');
-  const [password, setPassword] = useState('123456789');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const [alertConf, setAlertConf] = useState({
     color: '',

@@ -26,10 +26,12 @@ export default function Home() {
 
   return (
     <Navbar className={styles.mainNavbar}>
-      <NavbarBrand>DoTask</NavbarBrand>
+      <NavbarBrand><Button style={{
+        backgroundColor: 'transparent', border: 'none', outline: 'none'
+      }} onClick={() => router.push('/list')}>DoTask</Button></NavbarBrand>
       <Nav>
         <NavItem>
-          <Button className={styles.button_perfil} onClick={() => router.push('/perfil')} >{username}</Button>
+          <Button style={{ backgroundColor: 'transparent', border: 'none', outline: 'none' }} className={styles.button_perfil} onClick={() => router.push('/perfil')} >{username}</Button>
         </NavItem>
       </Nav>
     </Navbar>

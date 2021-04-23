@@ -96,14 +96,16 @@ export default function TaskModal({ open, close, insert, edit, item }) {
             <small>Até 150 caracteres</small>
           </FormGroup>
 
-          <div className={stylesForm.buttonGroup}>
+          <div className={stylesForm.buttonGroup} style={{
+            justifyContent: edit ? 'space-between' : 'flex-end'
+          }}>
             {edit && (
-              <>
+              <div>
                 <Button color='success' className={stylesForm.buttonCheck}
                   onClick={checkTask}>Marcar como concluída</Button>
                 <Button color='danger' className={stylesForm.buttonDelete}
                   onClick={createTask}>Deletar</Button>
-              </>
+              </div>
             )}
 
             <Button className={stylesForm.buttonCreate} color='primary'
